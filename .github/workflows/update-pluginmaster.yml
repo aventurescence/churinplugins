@@ -1,0 +1,61 @@
+name: Update PluginMaster
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [update-pluginmaster]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update pluginmaster.json
+        run: |
+          # Create a temporary file for the new entry
+          cat <<EOF > new_entry.json
+          {
+            "Author": "Churin",
+            "Name": "${{ github.event.client_payload.name }}",
+            "InternalName": "${{ github.event.client_payload.name }}",
+            "AssemblyVersion": "${{ github.event.client_payload.version }}",
+            "Description": "Tracks raid progression, tomestones, and gear.",
+            "ApplicableVersion": "any",
+            "RepoUrl": "https://github.com/aventurescence/Understudy",
+            "Tags": ["raid", "tomestones", "gear", "tracking"],
+            "DalamudApiLevel": 14,
+            "LoadPriority": 0,
+            "IconUrl": "https://raw.githubusercontent.com/aventurescence/Understudy/master/Understudy/aSSETS/Understudy2.png",
+            "ImageUrls": [],
+            "Punchline": "Your raid progression and currency tracker.",
+            "AcceptsFeedback": true,
+            "_isDip17Plugin": true,
+            "_Dip17Channel": "stable",
+            "DownloadLinkInstall": "${{ github.event.client_payload.download_url }}",
+            "DownloadLinkUpdate": "${{ github.event.client_payload.download_url }}",
+            "DownloadLinkTesting": "${{ github.event.client_payload.download_url }}"
+          }
+          EOF
+          
+          # Use jq to update the array
+          # If the plugin exists, update it. If not, add it.
+          # Note: Determining existence by InternalName is standard.
+          
+          jq --argjson newEntry "$(cat new_entry.json)" '
+            if any(.[]; .InternalName == $newEntry.InternalName) then
+              map(if .InternalName == $newEntry.InternalName then $newEntry else . end)
+            else
+              . + [$newEntry]
+            end
+          ' pluginmaster.json > pluginmaster.tmp && mv pluginmaster.tmp pluginmaster.json
+          
+          rm new_entry.json
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add pluginmaster.json
+          git commit -m "Update ${{ github.event.client_payload.name }} to ${{ github.event.client_payload.version }}"
+          git push
