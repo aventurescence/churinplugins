@@ -16,13 +16,17 @@ jobs:
 
       - name: Update pluginmaster.json
         run: |
+          # Strip 'v' prefix from version
+          VERSION="${{ github.event.client_payload.version }}"
+          VERSION="${VERSION#v}"
+
           # Create a temporary file for the new entry
           cat <<EOF > new_entry.json
           {
             "Author": "Churin",
             "Name": "${{ github.event.client_payload.name }}",
             "InternalName": "${{ github.event.client_payload.name }}",
-            "AssemblyVersion": "${{ github.event.client_payload.version }}",
+            "AssemblyVersion": "$VERSION",
             "Description": "Tracks raid progression, tomestones, and gear.",
             "ApplicableVersion": "any",
             "RepoUrl": "https://github.com/aventurescence/Understudy",
