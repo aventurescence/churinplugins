@@ -16,7 +16,7 @@
     "DalamudApiLevel": 14,
     "LoadPriority": 0,
     "IconUrl": "https://raw.githubusercontent.com/aventurescence/Understudy/master/Understudy/aSSETS/Understudy2.png",
-    "ImageUrls": [],
+    "ImageUrls": "https://raw.githubusercontent.com/aventurescence/Understudy/master/Understudy/aSSETS/Understudy2.png",
     "Punchline": "Your raid progression and currency tracker.",
     "AcceptsFeedback": true,
     "_isDip17Plugin": true,
