@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "Author": "Churin",
+    "Name": "Understudy",
+    "InternalName": "Understudy",
+    "AssemblyVersion": "v1.0.0.0",
+    "Description": "Tracks raid progression, tomestones, and gear.",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/aventurescence/Understudy",
+    "Tags": [
+      "raid",
+      "tomestones",
+      "gear",
+      "tracking"
+    ],
+    "DalamudApiLevel": 14,
+    "LoadPriority": 0,
+    "IconUrl": "https://raw.githubusercontent.com/aventurescence/Understudy/master/Understudy/aSSETS/Understudy2.png",
+    "ImageUrls": [],
+    "Punchline": "Your raid progression and currency tracker.",
+    "AcceptsFeedback": true,
+    "_isDip17Plugin": true,
+    "_Dip17Channel": "stable",
+    "DownloadLinkInstall": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.0/latest.zip",
+    "DownloadLinkTesting": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.0/latest.zip"
+  }
+]
