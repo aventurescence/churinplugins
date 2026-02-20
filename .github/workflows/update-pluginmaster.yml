@@ -16,9 +16,13 @@ jobs:
 
       - name: Update pluginmaster.json
         run: |
-          # Strip 'v' prefix from version
+          # Strip 'v' prefix and ensure 4-part version for Dalamud
           VERSION="${{ github.event.client_payload.version }}"
           VERSION="${VERSION#v}"
+          # Pad to 4-part version (X.Y.Z.W)
+          IFS='.' read -ra PARTS <<< "$VERSION"
+          while [ ${#PARTS[@]} -lt 4 ]; do PARTS+=("0"); done
+          VERSION="${PARTS[0]}.${PARTS[1]}.${PARTS[2]}.${PARTS[3]}"
 
           # Create a temporary file for the new entry
           cat <<EOF > new_entry.json
@@ -33,7 +37,7 @@ jobs:
             "Tags": ["raid", "tomestones", "gear", "tracking"],
             "DalamudApiLevel": 14,
             "LoadPriority": 0,
-            "IconUrl": "https://raw.githubusercontent.com/aventurescence/Understudy/master/Understudy/aSSETS/Understudy2.png",
+            "IconUrl": "https://raw.githubusercontent.com/aventurescence/Understudy/main/Understudy/aSSETS/Understudy2.png",
             "ImageUrls": [],
             "Punchline": "Your raid progression and currency tracker.",
             "AcceptsFeedback": true,
