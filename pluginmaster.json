@@ -3,7 +3,7 @@
     "Author": "Churin",
     "Name": "Understudy",
     "InternalName": "Understudy",
-    "AssemblyVersion": "1.0.0.2",
+    "AssemblyVersion": "1.0.0.3",
     "Description": "Tracks raid progression, tomestones, and gear.",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/aventurescence/Understudy",
@@ -21,8 +21,8 @@
     "AcceptsFeedback": true,
     "_isDip17Plugin": true,
     "_Dip17Channel": "stable",
-    "DownloadLinkInstall": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.2/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.2/latest.zip",
-    "DownloadLinkTesting": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.2/latest.zip"
+    "DownloadLinkInstall": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.3/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.3/latest.zip",
+    "DownloadLinkTesting": "https://github.com/aventurescence/Understudy/releases/download/v1.0.0.3/latest.zip"
   }
 ]
